@@ -14,84 +14,28 @@ class XylophoneApp extends StatelessWidget {
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Expanded(
-                flex: 1,
-                child: FlatButton(
-                  color: Colors.red,
-                  onPressed: () {
-                    final player = AudioCache();
-                    player.play('note1.wav');
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: FlatButton(
-                  color: Colors.orange,
-                  onPressed: () {
-                    final player = AudioCache();
-                    player.play('note2.wav');
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: FlatButton(
-                  color: Colors.yellow,
-                  onPressed: () {
-                    final player = AudioCache();
-                    player.play('note3.wav');
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: FlatButton(
-                  color: Colors.green,
-                  onPressed: () {
-                    final player = AudioCache();
-                    player.play('note4.wav');
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: FlatButton(
-                  color: Colors.blueGrey,
-                  onPressed: () {
-                    final player = AudioCache();
-                    player.play('note5.wav');
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: FlatButton(
-                  color: Colors.lightBlue,
-                  onPressed: () {
-                    playSound(6);
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: FlatButton(
-                  color: Colors.teal,
-                  onPressed: () {
-                    playSound(7);
-                  },
-                  child: null,
-                ),
-              ),
+              buildKeyWidget(Colors.red, 1),
+              buildKeyWidget(Colors.orange, 2),
+              buildKeyWidget(Colors.yellow, 3),
+              buildKeyWidget(Colors.green, 4),
+              buildKeyWidget(Colors.blueGrey, 5),
+              buildKeyWidget(Colors.lightBlue, 6),
+              buildKeyWidget(Colors.teal, 7),
             ],
           )),
         ),
+      ),
+    );
+  }
+
+  Expanded buildKeyWidget(Color color, int noteNumber) {
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          playSound(noteNumber);
+        },
+        child: null,
       ),
     );
   }
